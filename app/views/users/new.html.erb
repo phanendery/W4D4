@@ -1,0 +1,24 @@
+<h1>Join our family!</h1>
+
+<% if flash[:errors] %>
+    <ul>
+    <%flash[:errors].each do |err|%>
+        <li><%=err%></li>
+    <%end%>
+    </ul>
+<% end %>
+
+<form action="<%=users_url%>"method="POST">
+<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+<label>
+    Enter your email(this will be your username):
+    <input type="text" name="user[email]" value="<%@user.email%>">
+</label>
+<br><br>
+<label>
+    Enter your password(minimum 6 characters):
+    <input type="text" name="user[password]" value="<%@user.password%>">
+</label>
+<br><br>
+    <input type="submit" value="Join!">
+</form>
